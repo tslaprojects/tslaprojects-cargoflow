@@ -1,7 +1,7 @@
 name: Native apps
 
 # Сборка нативных приложений CargoFlow (Flutter): проверки + Android (APK), iOS (без подписи), macOS, Windows.
-# Адрес API для сборок — переменная репозитория CARGOFLOW_API (Settings → Variables), например https://api.example.com.
+# Адрес API для сборок — переменная репозитория CARGOFLOW_API (Settings → Variables); без неё — тестовый сервер на Railway.
 # Подложка карт — переменная GEOAPIFY_KEY (публичный ключ карт Geoapify); пусто — тайлы OSM.
 on:
   push:
@@ -17,7 +17,7 @@ concurrency:
 
 env:
   FLUTTER_VERSION: "3.47.5"
-  API_DEFINE: --dart-define=CARGOFLOW_API=${{ vars.CARGOFLOW_API || 'http://localhost:3000' }} --dart-define=GEOAPIFY_KEY=${{ vars.GEOAPIFY_KEY }}
+  API_DEFINE: --dart-define=CARGOFLOW_API=${{ vars.CARGOFLOW_API || 'https://tslaprojects-cargoflow-copy-production.up.railway.app' }} --dart-define=GEOAPIFY_KEY=${{ vars.GEOAPIFY_KEY }}
 
 jobs:
   checks:
