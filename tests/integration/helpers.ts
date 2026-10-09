@@ -41,11 +41,13 @@ export async function makeUser(opts: { role?: MemberRole; companyId?: string; ad
   return user;
 }
 
-export async function makeCompany(type: CompanyType, name = `${type} Co ${++counter}`) {
+export async function makeCompany(type: CompanyType, name?: string) {
+  // Счётчик растёт при каждом вызове: иначе компании с явным именем, созданные в одну миллисекунду, получат одинаковый registrationNumber
+  counter += 1;
   return prisma.company.create({
     data: {
       type,
-      legalName: name,
+      legalName: name ?? `${type} Co ${counter}`,
       registrationNumber: `REG-${counter}-${Date.now()}`,
       country: "KZ",
       city: "Алматы",
