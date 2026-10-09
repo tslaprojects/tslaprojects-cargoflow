@@ -74,7 +74,7 @@ export function DataModeBadge({ mode, className }: { mode: DataModeValue; classN
       title={`Режим данных: ${meta.label}`}
     >
       <Icon className="size-3.5" aria-hidden />
-      <span className="sm:hidden">{mode === "demo" ? "ДЕМО" : "REAL"}</span>
+      <span className="sm:hidden">{meta.short}</span>
       <span className="hidden sm:inline">{meta.label}</span>
     </span>
   );

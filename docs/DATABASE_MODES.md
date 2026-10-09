@@ -107,8 +107,8 @@ Seed выполняется внутри `runWithDataMode("demo")` и пишет
 компании с реальными участниками не трогаются. Одна транзакция; повторный запуск ничего не делает.
 
 ```bash
-npx tsx --conditions=react-server scripts/purge-demo-from-real.ts           # сухой прогон: что будет удалено
-npx tsx --conditions=react-server scripts/purge-demo-from-real.ts --apply   # удалить
+npm run db:purge-demo              # сухой прогон: что будет удалено
+npm run db:purge-demo -- --apply   # удалить
 ```
 
 ## 7. Запуск в контейнере
